@@ -114,6 +114,14 @@ func InjectAuthHeaders(ctx context.Context, c client.Client, grafana *v1beta1.Gr
 	return nil
 }
 
+func InjectGrafanaClientHeaders(grafana *v1beta1.Grafana) map[string]string {
+	headerMap := make(map[string]string)
+	for _, header := range grafana.Spec.Client.Headers {
+		headerMap[header.Name] = header.Value
+	}
+	return headerMap
+}
+
 func NewGeneratedGrafanaClient(ctx context.Context, c client.Client, grafana *v1beta1.Grafana) (*genapi.GrafanaHTTPAPI, error) {
 	var timeout time.Duration
 	if grafana.Spec.Client != nil && grafana.Spec.Client.TimeoutSeconds != nil {
@@ -157,6 +165,8 @@ func NewGeneratedGrafanaClient(ctx context.Context, c client.Client, grafana *v1
 		NumRetries: 0,
 		Client:     client,
 		TLSConfig:  tlsConfig,
+		// Inject the grafana client headers defined in the CR
+		HTTPHeaders: InjectGrafanaClientHeaders(grafana),
 	}
 	if credentials.username != "" {
 		cfg.BasicAuth = url.UserPassword(credentials.username, credentials.password)

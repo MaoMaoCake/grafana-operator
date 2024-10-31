@@ -109,6 +109,11 @@ type JsonnetConfig struct {
 	LibraryLabelSelector *metav1.LabelSelector `json:"libraryLabelSelector,omitempty"`
 }
 
+type Header struct {
+	Name  string
+	Value string
+}
+
 // GrafanaClient contains the Grafana API client settings
 type GrafanaClient struct {
 	// +nullable
@@ -119,6 +124,8 @@ type GrafanaClient struct {
 	// TLS Configuration used to talk with the grafana instance.
 	// +optional
 	TLS *TLSConfig `json:"tls,omitempty"`
+
+	Headers []Header `json:"headers,omitempty"`
 }
 
 // GrafanaPreferences holds Grafana preferences API settings
