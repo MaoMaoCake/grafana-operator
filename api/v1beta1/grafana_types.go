@@ -110,8 +110,8 @@ type JsonnetConfig struct {
 }
 
 type Header struct {
-	Name  string
-	Value string
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 // GrafanaClient contains the Grafana API client settings

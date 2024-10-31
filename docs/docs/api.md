@@ -3754,6 +3754,13 @@ Client defines how the grafana-operator talks to the grafana instance.
         </tr>
     </thead>
     <tbody><tr>
+        <td><b><a href="#grafanaspecclientheadersindex">headers</a></b></td>
+        <td>[]object</td>
+        <td>
+          <br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
         <td><b>preferIngress</b></td>
         <td>boolean</td>
         <td>
@@ -3776,6 +3783,40 @@ Client defines how the grafana-operator talks to the grafana instance.
             <i>Validations</i>:<li>(has(self.insecureSkipVerify) && !(has(self.certSecretRef))) || (has(self.certSecretRef) && !(has(self.insecureSkipVerify))): insecureSkipVerify and certSecretRef cannot be set at the same time</li>
         </td>
         <td>false</td>
+      </tr></tbody>
+</table>
+
+
+### Grafana.spec.client.headers[index]
+<sup><sup>[↩ Parent](#grafanaspecclient)</sup></sup>
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Required</th>
+        </tr>
+    </thead>
+    <tbody><tr>
+        <td><b>name</b></td>
+        <td>string</td>
+        <td>
+          <br/>
+        </td>
+        <td>true</td>
+      </tr><tr>
+        <td><b>value</b></td>
+        <td>string</td>
+        <td>
+          <br/>
+        </td>
+        <td>true</td>
       </tr></tbody>
 </table>
 
