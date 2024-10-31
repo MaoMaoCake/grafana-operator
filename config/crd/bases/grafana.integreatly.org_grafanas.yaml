@@ -93,6 +93,22 @@ spec:
                         at the same time
                       rule: (has(self.insecureSkipVerify) && !(has(self.certSecretRef)))
                         || (has(self.certSecretRef) && !(has(self.insecureSkipVerify)))
+                  headers:
+                    description: An array of name value pairs to add to the grafana
+                      instance as headers.
+                    items:
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - name
+                      - value
+                      type: object
+                    nullable: true
+                    type: object
+
                 type: object
               config:
                 additionalProperties:
